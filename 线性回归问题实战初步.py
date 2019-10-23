@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt#载入matplotlib
 import numpy as np
 import tensorflow as tf
 
+
+#
 #设置随机数种子
 np.random.seed(5)
 
@@ -16,6 +18,8 @@ x_data = np.linspace(-1,1,100)
 y_data  = 2 * x_data +1.0 +np.random.randn(*x_data.shape)*0.4
 
 
+
+#
 #画出随机生成数据的散点图
 plt.scatter(x_data,y_data)
 
@@ -23,6 +27,9 @@ plt.scatter(x_data,y_data)
 plt.plot(x_data,2*x_data+1.0,color = 'red',linewidth = 3)
 
 
+
+
+#
 #定义训练数据的占位符，x是特征值，y是标签值
 x = tf.placeholder("float",name = 'x')
 y = tf.placeholder("float",name ='y')
@@ -32,6 +39,8 @@ def model(x,w,b):
     return tf.multiply(x,w)+b
 
 
+
+#
 定义模型结构
 TensorFlow变量的声明函数是tf.Variable
 tf.Varoable的作用格式保存和更新参数
