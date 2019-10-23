@@ -55,6 +55,9 @@ b = tf.Variable(0.0,name ="b0")
 #pred是预测值，前向计算
 pred = model(x,w,b)
 
+
+
+#
 设置训练参数
 
 #迭代次数（训练轮数）
@@ -64,6 +67,9 @@ train_epochs = 10
 learning_rate = 0.05
 
 
+
+
+#
 定义损失函数
 损失函数用于描述预测值与真实值之间的误差，从而指导模型收敛方向
 常见损失函数：均方差和交叉熵
@@ -72,6 +78,8 @@ learning_rate = 0.05
 loss_function = tf.reduce_mean(tf.square(y-pred))
 
 
+
+#
 定义优化器
 定义优化器Optimizer，初始化一个GradientDescentOptimizer
 设置学习率和优化目标：最小化损失¶
@@ -83,6 +91,9 @@ optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss_funct
 sess = tf.Session()
 
 
+
+
+#
 变量初始化
 在真正执行计算之前，需要将所有变量初始化
 通过tf.global_variables_initializer 函数可实现对所有变量的初始化
@@ -93,6 +104,9 @@ init = tf.global_variables_initializer()
 sess.run(init)
 
 
+
+
+#
 迭代训练
 模型训练阶段，设置迭代轮次，每次通过讲样本逐个输入模型，进行梯度下降优化操作，每轮迭代后，回执出模型曲线¶
 
@@ -107,7 +121,10 @@ for epoch in range(train_epochs):
     w0temp = w.eval(session = sess)
     plt.plot (x_data,w0temp*x_data+b0temp)#画图
     
-    
+   
+
+
+#
     结果查看
 当训练完成后，打印查看参数
 
@@ -117,6 +134,10 @@ print("b: ",sess.run(b))#b的值应该在1附近
 
 #每次数据运行都可能会有所不同
 
+
+
+
+#
 结果可视化
 plt.scatter(x_data,y_data,label  = "Original data")
 plt.plot(x_data,x_data*sess.run(w)+sess.run(b),\
@@ -126,6 +147,7 @@ plt.legend(loc = 2)#通过参数loc制定图例位置
 
 
 
+#
 利用模型 进行预测
 x_test = 3.21
 ​
